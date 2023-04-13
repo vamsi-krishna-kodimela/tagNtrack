@@ -78,4 +78,21 @@ const getUser = async (req: PopulatedRequest<any>, res: Response) => {
   res.json(user);
 };
 
-export { signupUser, loginUser, getUser };
+const getUserById = async (req: Request, res: Response) => {
+  const userId = req.params.id;
+  try {
+    const user: any = await User.findById(userId).select("-password");
+    if (user) {
+      res.json({
+        ...user._doc,
+        _id: user._id?.toString(),
+      });
+    } else {
+      res.status(400).send("User Not found.");
+    }
+  } catch (err) {
+    res.status(400).send("Somthing went wrong.");
+  }
+};
+
+export { signupUser, loginUser, getUser, getUserById };
