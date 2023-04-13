@@ -23,7 +23,7 @@ const signupUser = async (req: PopulatedRequest<IAuth>, res: Response) => {
       mobile: signupData.mobile,
     });
     if (isEmailExists || isMobileExists) {
-      res.json(400).json("User already Exists.");
+      res.status(400).json("User already Exists.");
       return;
     }
     const encrypterPassword = EncryptionHelper.hashPassword(
@@ -73,4 +73,9 @@ const loginUser = async (req: PopulatedRequest<any>, res: Response) => {
   }
 };
 
-export { signupUser, loginUser };
+const getUser = async (req: PopulatedRequest<any>, res: Response) => {
+  const user = req.user;
+  res.json(user);
+};
+
+export { signupUser, loginUser, getUser };

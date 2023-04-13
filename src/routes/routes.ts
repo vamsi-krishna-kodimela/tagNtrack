@@ -5,7 +5,7 @@ import PartnerRoutes from "./delivery-partner.routes";
 import CustomerRoutes from "./customer.routes";
 
 const router = Router();
-router.use("/auth", AuthRoutes);
+router.use("/user", AuthRoutes);
 router.use("/partner", PartnerRoutes);
 router.use("/customer", CustomerRoutes);
 
