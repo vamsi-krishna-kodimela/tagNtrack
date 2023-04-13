@@ -2,8 +2,8 @@ import { Schema, model } from "mongoose";
 
 const user = new Schema({
   name: { type: String },
-  email: { type: String },
-  mobile: { type: String },
+  email: { type: String, unique: true },
+  mobile: { type: String, unique: true },
   address: {
     type: {
       address: String,
@@ -21,4 +21,4 @@ const user = new Schema({
   },
 });
 
-export = model("User", user);
+export default model("User", user);
