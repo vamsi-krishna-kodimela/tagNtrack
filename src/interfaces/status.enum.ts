@@ -9,3 +9,5 @@ enum ShipmentStatus {
   "Out For Delivery",
   "Delivered",
 }
+
+export = ShipmentStatus;

@@ -1,7 +1,7 @@
 import { Schema, model } from "mongoose";
 
 const status = new Schema({
-  date: { type: Date },
+  date: { type: Date, default: Date.now },
   comment: { type: String },
   status: {
     type: String,

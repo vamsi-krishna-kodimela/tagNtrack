@@ -6,8 +6,8 @@ export default interface IShipment {
   bookedOn: Date;
   bookedBy: IUser;
   pickupDetails: IUser;
-  deliveryDeails: IUser;
-  deliveryPartner: IUser;
+  deliveryDetails: IUser;
+  deliveryPartner?: IUser;
   wieght: number;
   cost: number;
   latestStatus: IShipmentStatus;
