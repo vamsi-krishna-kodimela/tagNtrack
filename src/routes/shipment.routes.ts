@@ -1,8 +1,12 @@
 import { Router } from "express";
-import { createShipment } from "../controllers/shipment.controller";
+import {
+  createShipment,
+  getShipmentsById,
+} from "../controllers/shipment.controller";
 
 const router = Router();
 
 router.route("/create").post(createShipment);
+router.route("/:id").get(getShipmentsById);
 
 export = router;

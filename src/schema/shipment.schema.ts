@@ -7,6 +7,7 @@ const shipment = new Schema({
   PickupDetails: { type: Schema.Types.ObjectId, ref: "DeliveryDetail" },
   deliveryDetails: { type: Schema.Types.ObjectId, ref: "DeliveryDetail" },
   weight: { type: Number },
+  cost: { type: Number },
   latestStatus: { type: Schema.Types.ObjectId, ref: "ShipmentStatus" },
 });
 
