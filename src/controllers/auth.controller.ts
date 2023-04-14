@@ -56,6 +56,8 @@ const loginUser = async (req: PopulatedRequest<any>, res: Response) => {
           console.log(user);
 
           const token = generateToken(user._id!.toString());
+          console.log(token);
+          
           res.json({
             token: token,
             name: user.name,
