@@ -47,7 +47,7 @@ const loginUser = async (req: PopulatedRequest<any>, res: Response) => {
   const signupData = req.body;
   if (signupData.email && signupData.password) {
     try {
-      const user = await User.findOne<IAuth>({
+      const user:any = await User.findOne({
         email: signupData.email,
       });
       console.log(user);
