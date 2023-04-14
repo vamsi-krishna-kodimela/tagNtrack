@@ -47,7 +47,7 @@ const loginUser = async (req: PopulatedRequest<any>, res: Response) => {
   const signupData = req.body;
   if (signupData.email && signupData.password) {
     try {
-      const user = await User.findOne<IAuth>({
+      const user = await User.findOne({
         email: signupData.email,
       });
       if (user) {
@@ -55,7 +55,7 @@ const loginUser = async (req: PopulatedRequest<any>, res: Response) => {
         if (EncryptionHelper.comparePassword(signupData.password, password)) {
           console.log(user);
 
-          const token = generateToken(user._id!.toString());
+          const token = generateToken(user.id.toString());
           console.log(token);
           
           res.json({
