@@ -11,7 +11,6 @@ const protectedRoute = async (req: any, res: any, next: any) => {
       if (user) {
         req.user = {
           ...user._doc,
-          _id: user._id?.toString(),
         };
       } else {
         res.status(401).send("Unauthorized access!");
