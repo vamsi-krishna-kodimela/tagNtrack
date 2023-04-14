@@ -5,7 +5,6 @@ import Shipment from "../schema/shipment.schema";
 import ShipmentStatus from "../schema/shipment-status.schema";
 import DeliveryDetails from "../schema/delivery-details.schema";
 import UserType from "../interfaces/user-type.enum";
-import { type } from "os";
 
 const createShipment = async (
   req: PopulatedRequest<IShipment>,
@@ -14,7 +13,7 @@ const createShipment = async (
   const shipmentPayload = req.body;
   const user = req.user;
   try {
-    if (user?.type == UserType[UserType.Customer]) {
+    if (user?.type == "Customer") {
       const shipmentStatus = await ShipmentStatus.create({
         status: "Booked",
       });
@@ -82,7 +81,7 @@ const getShipmentsById = async (req: Request, res: Response) => {
 
 const getShipments = async (req: PopulatedRequest<any>, res: Response) => {
   const user = req.user;
-  if (user?.type == UserType[UserType.Customer]) {
+  if (user?.type == "Customer") {
     const shipments = await Shipment.find({ bookedBy: user })
       .populate({
         path: "bookedBy",
@@ -148,7 +147,7 @@ const updateStatus = async (
   const user = req.user;
   const shipmentId = req.params.id;
   const status = req.body.status;
-  if (user?.type == UserType[UserType["Delivery Agent"]]) {
+  if (user?.type == "Delivery Agent") {
     try {
       const statusObj = await ShipmentStatus.create({ status: status });
       const shipment = await Shipment.findByIdAndUpdate(shipmentId, {
