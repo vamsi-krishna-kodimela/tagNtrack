@@ -47,15 +47,13 @@ const loginUser = async (req: PopulatedRequest<any>, res: Response) => {
   const signupData = req.body;
   if (signupData.email && signupData.password) {
     try {
-      const user:any = await User.findOne({
+      const user = await User.findOne<IAuth>({
         email: signupData.email,
       });
-      console.log(user);
-      
       if (user) {
         const password = user.password!;
         if (EncryptionHelper.comparePassword(signupData.password, password)) {
-          const token = generateToken(user._id!);
+          const token = generateToken(user._id!.toString());
           res.json({
             token: token,
             name: user.name,
@@ -68,7 +66,6 @@ const loginUser = async (req: PopulatedRequest<any>, res: Response) => {
       }
       res.status(400).send("User not found.");
     } catch (error) {
-      console.log(error);
       res.status(400).send("Fail to create user.");
     }
   } else {
@@ -94,7 +91,6 @@ const getUserById = async (req: Request, res: Response) => {
       res.status(400).send("User Not found.");
     }
   } catch (err) {
-    console.log(err);
     res.status(400).send("Somthing went wrong.");
   }
 };
