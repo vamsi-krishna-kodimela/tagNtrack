@@ -1,4 +1,5 @@
 import IAddress from "./address.interface";
+import UserType from "./user-type.enum";
 
 export default interface IUser {
   _id?: string;
