@@ -53,7 +53,7 @@ const loginUser = async (req: PopulatedRequest<any>, res: Response) => {
       if (user) {
         const password = user.password!;
         if (EncryptionHelper.comparePassword(signupData.password, password)) {
-          const token = generateToken(user.id.toString());          
+          const token = generateToken(user._id.toString());          
           res.json({
             token: token,
             name: user.name,
