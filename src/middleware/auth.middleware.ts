@@ -8,6 +8,8 @@ const protectedRoute = async (req: any, res: any, next: any) => {
     if (token) {
       const { id } = decodeToken(token) as { id: string };
       const user: any = await User.findById(id).select("-password");
+      console.log(user);
+      
       if (user) {
         req.user = {
           ...user._doc,

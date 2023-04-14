@@ -50,6 +50,8 @@ const loginUser = async (req: PopulatedRequest<any>, res: Response) => {
       const user = await User.findOne<IAuth>({
         email: signupData.email,
       });
+      console.log(user);
+      
       if (user) {
         const password = user.password!;
         if (EncryptionHelper.comparePassword(signupData.password, password)) {
