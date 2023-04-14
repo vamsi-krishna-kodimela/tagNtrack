@@ -6,7 +6,7 @@
   "scripts": {
     "start:dev": "ts-node-dev ./src/index.ts",
     "build": "rimraf ./build && tsc",
-    "start": "npm run build && node build/index.js"
+    "start": "node build/index.js"
   },
   "author": "Vamsi Krishna Kodimela",
   "license": "ISC",
