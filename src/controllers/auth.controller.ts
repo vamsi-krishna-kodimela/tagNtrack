@@ -53,6 +53,8 @@ const loginUser = async (req: PopulatedRequest<any>, res: Response) => {
       if (user) {
         const password = user.password!;
         if (EncryptionHelper.comparePassword(signupData.password, password)) {
+          console.log(user);
+          
           const token = generateToken(user._id!.toString());
           res.json({
             token: token,
@@ -66,6 +68,8 @@ const loginUser = async (req: PopulatedRequest<any>, res: Response) => {
       }
       res.status(400).send("User not found.");
     } catch (error) {
+      console.log(error);
+      
       res.status(400).send("Fail to create user.");
     }
   } else {
