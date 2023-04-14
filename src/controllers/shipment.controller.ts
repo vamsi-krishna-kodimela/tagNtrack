@@ -141,4 +141,27 @@ const getShipments = async (req: PopulatedRequest<any>, res: Response) => {
   }
 };
 
-export { createShipment, getShipmentsById, getShipments };
+const updateStatus = async (
+  req: PopulatedRequest<{ status: string }>,
+  res: Response
+) => {
+  const user = req.user;
+  const shipmentId = req.params.id;
+  const status = req.body.status;
+  if (user?.type == UserType[UserType["Delivery Agent"]]) {
+    try {
+      const statusObj = await ShipmentStatus.create({ status: status });
+      const shipment = await Shipment.findByIdAndUpdate(shipmentId, {
+        latestStatus: statusObj,
+      });
+      res.json(shipment);
+      return;
+    } catch (error) {
+      res.status(400).send("Failed to update status.");
+      return;
+    }
+  }
+  res.status(400).send("User not authorized to access this feature.");
+};
+
+export { createShipment, getShipmentsById, getShipments, updateStatus };
