@@ -156,6 +156,7 @@ const updateStatus = async (
       res.json(shipment);
       return;
     } catch (error) {
+      console.log(error);
       res.status(400).send("Failed to update status.");
       return;
     }

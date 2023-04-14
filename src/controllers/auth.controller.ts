@@ -66,6 +66,7 @@ const loginUser = async (req: PopulatedRequest<any>, res: Response) => {
       }
       res.status(400).send("User not found.");
     } catch (error) {
+      console.log(error);
       res.status(400).send("Fail to create user.");
     }
   } else {
@@ -91,6 +92,7 @@ const getUserById = async (req: Request, res: Response) => {
       res.status(400).send("User Not found.");
     }
   } catch (err) {
+    console.log(err);
     res.status(400).send("Somthing went wrong.");
   }
 };
