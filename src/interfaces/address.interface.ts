@@ -3,6 +3,6 @@ export default interface IAddress {
   city: string;
   state: string;
   country: string;
-  pincode: number;
-  coordinates: number[]
+  pincode: string;
+  coordinates?: number[];
 }

@@ -4,10 +4,10 @@ const shipment = new Schema({
   bookedOn: { type: Date, default: Date.now },
   bookedBy: { type: Schema.Types.ObjectId, ref: "User" },
   deliveryPartner: { type: Schema.Types.ObjectId, ref: "User" },
-  PickupDetails: { type: Schema.Types.ObjectId, ref: "DeliveryDetail" },
+  pickupDetails: { type: Schema.Types.ObjectId, ref: "DeliveryDetail" },
   deliveryDetails: { type: Schema.Types.ObjectId, ref: "DeliveryDetail" },
-  weight: { type: Number },
-  cost: { type: Number },
+  weight: { type: String },
+  cost: { type: String },
   latestStatus: { type: Schema.Types.ObjectId, ref: "ShipmentStatus" },
 });
 

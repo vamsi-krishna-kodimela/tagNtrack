@@ -10,7 +10,7 @@ const user = new Schema({
       city: String,
       state: String,
       country: String,
-      pincode: Number,
+      pincode: String,
       coordinates: { type: [{ type: Number }] },
     },
   },

@@ -24,7 +24,7 @@ const createShipment = async (
         shipmentPayload.deliveryDetails
       );
       const shipment = await Shipment.create({
-        ...shipmentPayload,
+        weight: shipmentPayload.weight,
         latestStatus: shipmentStatus,
         bookedBy: user,
         pickupDetails: pickupDetails,
@@ -56,7 +56,7 @@ const getShipmentsById = async (req: Request, res: Response) => {
         select: "-password",
       })
       .populate({
-        path: "PickupDetails",
+        path: "pickupDetails",
         strictPopulate: false,
       })
       .populate({
@@ -94,7 +94,7 @@ const getShipments = async (req: PopulatedRequest<any>, res: Response) => {
         select: "-password",
       })
       .populate({
-        path: "PickupDetails",
+        path: "pickupDetails",
         strictPopulate: false,
       })
       .populate({
@@ -125,7 +125,7 @@ const getShipments = async (req: PopulatedRequest<any>, res: Response) => {
         select: "-password",
       })
       .populate({
-        path: "PickupDetails",
+        path: "pickupDetails",
         strictPopulate: false,
       })
       .populate({

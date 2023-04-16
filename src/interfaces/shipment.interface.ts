@@ -8,7 +8,7 @@ export default interface IShipment {
   pickupDetails: IUser;
   deliveryDetails: IUser;
   deliveryPartner?: IUser;
-  wieght: number;
-  cost: number;
+  weight: string;
+  cost?: number;
   latestStatus: IShipmentStatus;
 }

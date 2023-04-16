@@ -6,5 +6,5 @@ export default interface IUser {
   email: string;
   mobile: string;
   address: IAddress;
-  type: String;
+  type: string;
 }
