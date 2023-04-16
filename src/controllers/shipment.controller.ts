@@ -153,7 +153,7 @@ const updateStatus = async (
       const shipment = await Shipment.findByIdAndUpdate(shipmentId, {
         latestStatus: statusObj,
       });
-      res.json(shipment);
+      res.json(statusObj);
       return;
     } catch (error) {
       console.log(error);
